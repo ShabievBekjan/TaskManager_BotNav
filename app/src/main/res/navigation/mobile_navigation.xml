@@ -23,10 +23,20 @@
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
     <fragment
-        android:id="@+id/Profile_Fragment"
+        android:id="@+id/TaskFragment"
         android:name="com.geektech.taskmanager_botnav.ui.task.TaskFragment"
         android:label="task"
         tools:layout="@layout/fragment_task" />
+    <fragment
+        android:id="@+id/ProfaileFragment"
+        android:name="com.geektech.taskmanager_botnav.ProfaileFragment"
+        android:label="fragment_profaile"
+        tools:layout="@layout/fragment_profaile" />
+    <fragment
+        android:id="@+id/boardFragment"
+        android:name="com.geektech.taskmanager_botnav.BoardFragment"
+        android:label="fragment_board"
+        tools:layout="@layout/fragment_board" />
 
 
 </navigation>

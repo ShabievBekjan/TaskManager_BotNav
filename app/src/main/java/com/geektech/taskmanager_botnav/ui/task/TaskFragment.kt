@@ -10,8 +10,10 @@ import android.view.ViewGroup
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.setFragmentResult
 import com.geektech.taskmanager_botnav.R
 import com.geektech.taskmanager_botnav.databinding.FragmentTaskBinding
+import com.geektech.taskmanager_botnav.ui.home.HomeFragment
 
 class TaskFragment : Fragment() {
 
@@ -29,27 +31,13 @@ class TaskFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-    initLauncher()
-        initListener()
-    }
-    private fun initListener() {
-        binding.image.setOnClickListener {
-            val intent = Intent()
-            intent.action = Intent.ACTION_PICK
-            intent.type = "image/*"
-            launcher.launch(intent)
+        binding.btnAdd.setOnClickListener {
+            setFragmentResult(
+                HomeFragment.TASK,bundleOf(
+                    NoteListFragment.NOTE to binding.editText.text.toString()
+                )
+            )
         }
-    }
-
-    private fun initLauncher() {
-        launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-
-            if (it.resultCode == AppCompatActivity.RESULT_OK) {
-                val image = it.data?.data
-                if (image != null) {
-                    binding.image.setImageURI(image)
-                }
-            }
-        }
+        )
     }
 }

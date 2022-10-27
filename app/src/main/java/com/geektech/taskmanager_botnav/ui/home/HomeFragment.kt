@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
 import com.geektech.taskmanager_botnav.R
+import com.geektech.taskmanager_botnav.data.Task
 import com.geektech.taskmanager_botnav.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -29,13 +31,19 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.fab.setOnClickListener {
-            findNavController().navigate(R.id.Profile_Fragment)
-        }
+
+                    binding.fab.setOnClickListener {
+                findNavController().navigate(R.id.navigation_home)
+            }
     }
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+     companion object {
+        const val TASK = "task.key"
     }
 }
